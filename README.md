@@ -101,7 +101,7 @@ git clone https://github.com/lgarmendia/stone.git
 cd stone
 ```
 ### 2. Construir as imagens Docker  
-- Para construir as imagens Docker, execute:  
+- Para construir as imagens Docker, execute (Com o Docker Desktop aberto):  
 ``` 
 make build-image
 ```
