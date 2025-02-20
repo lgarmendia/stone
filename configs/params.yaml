@@ -1,0 +1,8 @@
+bronze_location: "dddsoutput/data/bronze/"
+silver_location: "/opt/airflow/output/data/silver/"
+gold_location: "/opt/airflow/output/data/gold/"
+process_folder: "/opt/airflow/data/process"
+input_folder: "/opt/airflow/data/"
+duckdb_socio_silver: "/opt/airflow/duckdb/silver/socios_silver.db"
+duckdb_empresa_silver: "/opt/airflow/duckdb/silver/empresas_silver.db"
+duckdb_gold: "/opt/airflow/duckdb/gold/gold.db"
