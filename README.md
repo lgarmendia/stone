@@ -4,9 +4,25 @@
 Este projeto automatiza o pipeline de dados utilizando Apache Airflow e PySpark para processar os dados por meio de três camadas principais: Bronze, Silver e Gold. O objetivo é extrair, transformar e carregar (ETL) os dados, refinando-os até atingir uma forma de alta qualidade e inserir os dados em banco de dados para analises.
 
 # Escopo do projeto
-Este projeto demonstra o uso do Apache Airflow "Dockerizado" para o agendamento e monitoramento de tarefas ETL que executam scripts em PySpark. Ele transforma dados relacionados a empresas e socios através de diferentes estágios (Bronze, Prata e Ouro) aplicando transformações incrementais.
-
+Este projeto demonstra o uso do Apache Airflow "Dockerizado" para o agendamento e monitoramento de tarefas ETL que executam scripts em PySpark. Ele transforma dados relacionados a empresas e socios através de diferentes estágios (Bronze, Prata e Ouro) aplicando transformações incrementais e apos salva os dados no formato delta e também no Duckdb.
 A arquitetura do projeto segue a abordagem Medallion (Bronze-Prata-Ouro).
+
+
+### Motivos de escolha do Duckdb
+#### Arquitetura Embarcada (Embedded)
+* Funciona como uma biblioteca (sem servidor)
+* Zero configuração ou infraestrutura adicional
+* Ideal para projetos simples e autônomos
+
+#### Desempenho Analítico  
+* Processamento columnar nativo (OLAP)
+* Consultas rápidas em datasets de sócios/empresas (JOINs, GROUP BY)
+* Paralelismo automático 
+
+#### Integração com ETL em Python
+
+#### Eficiência em Memória
+* Dados processados na RAM (ideal para análises intermediária
 
 # Estrutura do projeto
 
@@ -89,5 +105,19 @@ make build-image
 make image-up
 ```
 
+## Configuração do Docker  
 
+###  Docker Compose
+O projeto utiliza Docker Compose para configurar o ambiente.
+Os seguintes serviços são definidos:
 
+* Spark Master e Worker: Utilizados para executar jobs distribuídos em PySpark.
+*  Airflow: Utilizado para orquestrar o pipeline de dados.
+
+### Executando o Pipeline
+Após iniciar o ambiente, você pode acionar o pipeline manualmente pela interface do Airflow.
+
+### Acessar o Airflow:
+ 1. Abra o navegador e vá para: http://localhost:8080
+ 2. Use as credenciais padrão: admin/admin
+ 3. No Airflow UI, acione a DAG "stone_pipeline".
