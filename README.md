@@ -28,6 +28,11 @@ A arquitetura do projeto segue a abordagem Medallion (Bronze-Prata-Ouro).
 
 ``` stone/
 ├── dags/                        # Airflow DAGs (pipelines) 
+├── data/                        # Dados do projeto para processamento
+│   ├── process/                 # Dados processados
+├── duckdb/
+│   ├── silver/                  # Camada silver duckdb
+│   ├── gold/                    # Camada gold duckdb
 ├── src/
 │   ├── bronze/                  # Camada bronze dos scripts
 │   ├── silver/                  # Camada silver dos scripts
@@ -37,6 +42,7 @@ A arquitetura do projeto segue a abordagem Medallion (Bronze-Prata-Ouro).
 ├── Dockerfile                   # Dockerfile para configurar o ambiente
 ├── Makefile                     # Comandos de automação para construção do ambiente
 ├── README.md                    # Documentação do projeto
+├── arquittura.png               # Desenho da arquitetura
 └── requirements.txt             # Dependências do Python 
 ```
 
